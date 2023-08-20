@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BrainBox | Login</title>
+		<link rel="stylesheet" href="./css/main.css" />
+		<link rel="stylesheet" href="./css/auth.css" />
+		<script type="module" src="firebase.js"defer></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="header">
+			<div class="wrapper">
+				<div class="logo">
+					<a href="index.html"><span>//</span> BrainBox</a>
+				</div>
+			</div>
+		</header>
+
+		<main class="main__container">
+			<div class="login_form__container">
+				<div class="form__title">
+					<h3>Welcome back</h3>
+					<h3>Login</h3>
+				</div>
+				<form class="login__form" autocomplete="on">
+					<div class="form__control">
+						<label for="email">Email</label>
+						<input
+							type="email"
+							name="email"
+							id="email"
+							placeholder="Johndoe@doe.com"
+							required
+						/>
+					</div>
+					<div class="form__control">
+						<label for="password">Password</label>
+						<input
+							type="password"
+							name="password"
+							id="password"
+							placeholder="**********"
+							maxlength="12"
+							minlength="8"
+							required
+						/>
+					</div>
+					<div class="button">
+						<button type="submit" class="form_submit__button" disabled>
+							Login
+						</button>
+					</div>
+				</form>
+				<div class="auth__links">
+					<p>
+						Don't have an account?
+						<a href="/signup.html">Sign up</a>
+					</p>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

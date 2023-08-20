@@ -1,0 +1,39 @@
+.banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 60px);
+  background-color: black;
+  color: white;
+}
+
+.banner__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.banner__content h3 {
+  font-size: 60px;
+}
+
+.banner__content p {
+  font-size: 20px;
+}
+
+.banner__content a {
+  padding: 13px 25px;
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.banner__content a:hover {
+  opacity: 0.85;
+}
