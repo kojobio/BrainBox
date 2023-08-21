@@ -1,108 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>BrainBox | Programs</title>
-		<link rel="stylesheet" href="/css/main.css" />
-		<link rel="stylesheet" href="/css/program.css" />
-	</head>
-	<body>
-		<!-- Header -->
-		<header class="header">
-			<div class="wrapper">
-				<div class="logo">
-					<a href="index.html"><span>//</span> BrainBox</a>
-				</div>
-				<nav class="nav">
-					<div class="links">
-						<a href="./program.html">Program</a>
-						<a href="./about.html">About</a>
-						<a href="./courses.html">Courses</a>
-					</div>
-					<div class="auth">
-						<a href="/login.html">Log in</a>
-					</div>
-				</nav>
-			</div>
-		</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrainBox | Programs</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/program.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="wrapper">
+        <div class="logo">
+          <a href="index.html"><span>//</span> BrainBox</a>
+        </div>
+        <nav class="nav">
+          <div class="links">
+            <!-- <a href="./program.html">Program</a> -->
+            <a href="./about.html">About</a>
+            <a href="./courses.html">Courses</a>
+          </div>
+          <div class="auth" id="auth">
+            <a href="/login.html" id="authLink" class="headerAuth">Log in</a>
+            <a href="/login.html" id="userPro" class="headerAuth">User</a>
+            <button class="headerAuth" type="button" id="logout">Logout</button>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-		<!-- Banner -->
-		<section class="banner">
-			<div class="banner__content">
-				<h3>Our Programs</h3>
-				<p>Find your favorite course and start learning.</p>
-				<a href="#programs__outline">Join a session</a>
-			</div>
-		</section>
+    <!-- Banner -->
+    <section class="banner">
+      <div class="banner__content">
+        <h3>Our Programs</h3>
+        <p>Find your favorite course and start learning.</p>
+        <a href="#programs__outline">Join a session</a>
+      </div>
+    </section>
 
-		<!-- * Features  -->
-		<section class="features" id="programs__outline">
-			<div class="features__title">
-				<h3>Programs Outline</h3>
-			</div>
-			<div class="features__outline">
-				<div class="outline">
-					<div class="avatar"></div>
-					<div class="details">
-						<h4>Personal Mentorship</h4>
-						<p>Get a personal mentor when stuck on a project.</p>
-					</div>
-				</div>
-				<div class="outline">
-					<div class="avatar"></div>
-					<div class="details">
-						<h4>Learning Resources</h4>
-						<p>Get access to learning resources for free.</p>
-					</div>
-				</div>
-				<div class="outline">
-					<div class="avatar"></div>
-					<div class="details">
-						<h4>Hands-on Projects</h4>
-						<p>Improve your skills by building projects.</p>
-					</div>
-				</div>
-			</div>
-		</section>
+    <!-- * Features  -->
+    <section class="features" id="programs__outline">
+      <div class="features__title">
+        <h3>Programs Outline</h3>
+      </div>
+      <div class="features__outline">
+        <div class="outline">
+          <div class="avatar"></div>
+          <div class="details">
+            <h4>Personal Mentorship</h4>
+            <p>Get a personal mentor when stuck on a project.</p>
+          </div>
+        </div>
+        <div class="outline">
+          <div class="avatar"></div>
+          <div class="details">
+            <h4>Learning Resources</h4>
+            <p>Get access to learning resources for free.</p>
+          </div>
+        </div>
+        <div class="outline">
+          <div class="avatar"></div>
+          <div class="details">
+            <h4>Hands-on Projects</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<!-- footer -->
-		<footer>
-			<div class="container">
-				<div class="left__footer">
-					<div class="footer__logo">
-						<a href="index.html">
-							<span>//</span>
-							BrainBox
-						</a>
-					</div>
-				</div>
-				<div class="footer__links">
-					<div class="footer_link">
-						<div class="title">
-							<h4>About</h4>
-						</div>
-						<ul>
-							<a href="courses.html">Courses</a>
-							<a href="about.html">About BrainBox</a>
-							<!--<a href="#">Courses</a>
+    <!-- * Courses -->
+    <section class="courses" id="courses__outline">
+      <div class="courses__title">
+        <h3>Featured Courses</h3>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
+          alias quae magni provident ab eum!
+        </p>
+      </div>
+      <div class="courses__outline">
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to Html</h4>
+            <p>Join 100+ students on live sessions with your tutor.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to Css</h4>
+            <p>Get a personal mentor when stuck on a project.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to JavaScript</h4>
+            <p>Get access to learning resources for free.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to ReactJS</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to SQL</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to UI/UX Design</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Redux For Intermediates</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to React Native</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to SQL</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to UI/UX Design</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Redux For Intermediates</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+        <div class="course__card">
+          <div class="cover__img"></div>
+          <div class="course__details">
+            <h4>Introduction to React Native</h4>
+            <p>Improve your skills by building projects.</p>
+          </div>
+        </div>
+      </div>
+      <div class="see__more">
+        <a href="#">See more</a>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+      <div class="container">
+        <div class="left__footer">
+          <div class="footer__logo">
+            <a href="index.html">
+              <span>//</span>
+              BrainBox
+            </a>
+          </div>
+        </div>
+        <div class="footer__links">
+          <div class="footer_link">
+            <div class="title">
+              <h4>About</h4>
+            </div>
+            <ul>
+              <a href="courses.html">Courses</a>
+              <a href="about.html">About BrainBox</a>
+              <!--<a href="#">Courses</a>
 							<a href="#">Courses</a>  -->
-						</ul>
-					</div>
-					<div class="footer_link">
-						<div class="title">
-							<h4>Contact</h4>
-						</div>
-						<ul>
-							<a>0550088395</a>
-							<a>Support@BrainBox.com</a>
-							<a>University Of Ghana</a>
-							<a>Legon </a>
-							
-						</ul>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</body>
+            </ul>
+          </div>
+          <div class="footer_link">
+            <div class="title">
+              <h4>Contact</h4>
+            </div>
+            <ul>
+              <a>0550088395</a>
+              <a>Support@BrainBox.com</a>
+              <a>University Of Ghana</a>
+              <a>Legon </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module">
+      import { auth } from "./firebase.js";
+      import {
+        signInWithEmailAndPassword,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
+
+      const authLink = document.getElementById("authLink");
+      const userPro = document.getElementById("userPro");
+      const logout = document.getElementById("logout");
+
+      // check the user state...
+      document.addEventListener("DOMContentLoaded", () => {
+        auth.onAuthStateChanged((user) => {
+          if (user) {
+            // User is signed in
+            authLink.style.display = "none";
+          } else {
+            // User is signed out
+            logout.style.display = "none";
+          }
+
+          // Sign out button click handler
+          logout.addEventListener("click", () => {
+            signOut(auth)
+              .then(() => {
+                // Sign-out successful.
+                window.location.replace("index.html");
+              })
+              .catch((error) => {
+                // An error happened.
+              });
+          });
+        });
+      });
+    </script>
+  </body>
 </html>

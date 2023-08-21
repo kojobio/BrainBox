@@ -1,64 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>BrainBox | Create account</title>
-		<link rel="stylesheet" href="./css/main.css" />
-		<link rel="stylesheet" href="./css/auth.css" />
-	</head>
-	<body>
-		<header class="header">
-			<div class="wrapper">
-				<div class="logo">
-					<a href="index.html"><span>//</span> BrainBox</a>
-				</div>
-			</div>
-		</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrainBox | Create account</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/auth.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrapper">
+        <div class="logo">
+          <a href="index.html"><span>//</span> BrainBox</a>
+        </div>
+      </div>
+    </header>
 
-		<main class="main__container">
-			<div class="login_form__container">
-				<div class="form__title">
-					<h3>Create an account</h3>
-				</div>
-				<form id="form" class="login__form" autocomplete="on">
-					<div class="form__control">
-						<label for="email">Email</label>
-						<input
-							type="email"
-							name="email"
-							id="email"
-							placeholder="Johndoe@doe.com"
-							required
-						/>
-					</div>
-					<div class="form__control">
-						<label for="password">Password</label>
-						<input
-							type="password"
-							name="password"
-							id="password"
-							placeholder="**********"
-							maxlength="12"
-							minlength="8"
-							required
-						/>
-					</div>
-					<div class="button">
-						<button type="submit" class="form_submit__button">
-							Create account
-						</button>
-					</div>
-				</form>
-				<div class="auth__links">
-					<p>
-						Already have an account?
-						<a href="/login.html">Login</a>
-					</p>
-				</div>
-			</div>
-		</main>
-		<script type="module" src="./firebase.js"></script>
-		<script type="module" src="./auth.js"></script>
-	</body>
+    <main class="main__container">
+      <div class="login_form__container">
+        <div class="form__title">
+          <h3>Create an account</h3>
+        </div>
+        <form id="form" class="login__form" autocomplete="on">
+          <div class="form__control">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Johndoe@doe.com"
+              required
+            />
+          </div>
+          <div class="form__control">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="**********"
+              maxlength="12"
+              minlength="8"
+              required
+            />
+          </div>
+          <div class="button">
+            <button type="submit" class="form_submit__button">
+              Create account
+            </button>
+          </div>
+        </form>
+        <div class="auth__links">
+          <p>
+            Already have an account?
+            <a href="/login.html">Login</a>
+          </p>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="./firebase.js"></script>
+    <script type="module">
+      import { auth } from "./firebase.js";
+      import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
+
+      const form = document.getElementById("form");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+		
+		const newEmail = email.value
+		const newPassword = password.value
+        console.log({ newEmail, newPassword });
+
+        await createUserWithEmailAndPassword(auth, newEmail, newPassword)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+        	alert('done')
+            console.log({ user });
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+          });
+      });
+    </script>
+  </body>
 </html>
