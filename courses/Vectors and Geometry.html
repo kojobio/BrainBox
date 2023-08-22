@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vectors and Geometry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #video-section, #resources-section, #quiz-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #quiz-questions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #quiz-questions ul li {
+            margin-bottom: 10px;
+        }
+
+        #quiz-questions label {
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        #quiz-feedback h3 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        #download-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section id="video-section">
+        <h2>Vectors and Geometry</h2>
+        <div id="video-player"></div>
+    </section>
+    <section id="resources-section">
+        <h2>Resources</h2>
+        <p>Explore additional learning resources:</p>
+        <button id="download-button"><a href="https://example.com/resources.pdf" download>Download Resources</a></button>
+    </section>
+    <section id="quiz-section">
+        <h2>Quiz</h2>
+        <div id="quiz-questions"></div>
+        <button id="submit-quiz">Submit Quiz</button>
+        <div id="quiz-feedback"></div>
+    </section>
+    <script>
+        const videoPlayer = document.getElementById("video-player");
+        videoPlayer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>';
+
+        const quizQuestions = [
+            {
+                question: "What is the magnitude of the vector (3, 4) in the xy-plane?",
+                options: ["5", "7", "3", "4"],
+                correctAnswer: 0
+            },
+            {
+                question: "Which of the following statements is true about collinear vectors?",
+                options: [
+                    "Collinear vectors lie in a plane but do not pass through a common point.",
+                    "Collinear vectors lie on the same line and pass through a common point.",
+                    "Collinear vectors lie on parallel lines but do not pass through a common point.",
+                    "Collinear vectors do not have a specific pattern."
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "In a triangle ABC, if a = 4i - 3j, b = 2i + 5j, and c = -i + 2j, what is the value of 2a + 3b - c?",
+                options: ["7i + 12j", "8i - 4j", "2i + 14j", "-i + 4j"],
+                correctAnswer: 0
+            },
+            {
+                question: "The dot product of two vectors A and B is given by A · B = |A| * |B| * cos(θ). What is the angle θ?",
+                options: ["θ = cos⁻¹(A · B / |A| * |B|)", "θ = tan⁻¹(A · B / |A| * |B|)", "θ = sin⁻¹(A · B / |A| * |B|)", "θ = sec⁻¹(A · B / |A| * |B|)"],
+                correctAnswer: 0
+            },
+            {
+                question: "In a 3D coordinate system, what is the direction cosines of a vector that is parallel to the z-axis?",
+                options: ["(0, 0, 1)", "(1, 0, 0)", "(0, 1, 0)", "(1, 1, 0)"],
+                correctAnswer: 0
+            }
+        ];
+
+        const quizContainer = document.getElementById("quiz-questions");
+        quizQuestions.forEach((questionObj, index) => {
+            const questionElement = document.createElement("div");
+            questionElement.innerHTML = `
+                <p>${index + 1}. ${questionObj.question}</p>
+                <ul>
+                    ${questionObj.options.map((option, optionIndex) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="question${index}" value="${optionIndex}">
+                                ${option}
+                            </label>
+                        </li>
+                    `).join("")}
+                </ul>
+                <p class="question-feedback"></p>
+            `;
+            quizContainer.appendChild(questionElement);
+        });
+
+        const submitButton = document.getElementById("submit-quiz");
+        submitButton.addEventListener("click", () => {
+            const userAnswers = [];
+
+            quizQuestions.forEach((questionObj, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                const feedbackElement = document.querySelector(`#quiz-questions div:nth-child(${index + 1}) .question-feedback`);
+
+                if (selectedOption) {
+                    const selectedValue = parseInt(selectedOption.value);
+                    userAnswers.push(selectedValue);
+
+                    if (selectedValue === questionObj.correctAnswer) {
+                        feedbackElement.textContent = "Correct";
+                        feedbackElement.classList.add("correct-answer");
+                    } else {
+                        feedbackElement.innerHTML = `Incorrect. The correct answer is: <span class="correct-answer">${questionObj.options[questionObj.correctAnswer]}</span>`;
+                        feedbackElement.classList.add("incorrect-answer");
+                    }
+                } else {
+                    feedbackElement.innerHTML = `You didn't select an answer. The correct answer is: <span class="correct-answer">${questionObj.options[questionObj.correctAnswer]}</span>`;
+                    feedbackElement.classList.add("incorrect-answer");
+                }
+            });
+
+            const feedbackContainer = document.getElementById("quiz-feedback");
+            feedbackContainer.innerHTML = `
+                <h3>Your Quiz Result</h3>
+                <p>You submitted the quiz.</p>
+            `;
+        });
+    </script>
+</body>
+</html>
