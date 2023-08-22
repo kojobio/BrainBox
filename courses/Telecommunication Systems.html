@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Telecommunication Systems</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #video-section, #resources-section, #quiz-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #quiz-questions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #quiz-questions ul li {
+            margin-bottom: 10px;
+        }
+
+        #quiz-questions label {
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        #quiz-feedback h3 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        #download-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section id="video-section">
+        <h2>Telecommunication Systems</h2>
+        <div id="video-player"></div>
+    </section>
+    <section id="resources-section">
+        <h2>Resources</h2>
+        <p>Explore additional learning resources:</p>
+        <button id="download-button"><a href="https://example.com/resources.pdf" download>Download Resources</a></button>
+    </section>
+    <section id="quiz-section">
+        <h2>Quiz: Telecommunication Systems</h2>
+        <div id="quiz-questions"></div>
+        <button id="submit-quiz">Submit Quiz</button>
+        <div id="quiz-feedback"></div>
+    </section>
+    <script>
+        const videoPlayer = document.getElementById("video-player");
+        videoPlayer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>';
+
+        const quizQuestions = [
+            {
+                question: "What is the main purpose of a telecommunication system?",
+                options: [
+                    "To process and manage data",
+                    "To provide entertainment services",
+                    "To enable communication over long distances",
+                    "To control manufacturing processes"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "What is the bandwidth of a communication channel?",
+                options: ["The distance between two communication points", "The frequency range of the channel", "The time it takes for a signal to travel", "The cost of the communication hardware"],
+                correctAnswer: 1
+            },
+            {
+                question: "Which type of modulation is used for transmitting digital data over analog channels?",
+                options: [
+                    "Amplitude modulation (AM)",
+                    "Frequency modulation (FM)",
+                    "Phase modulation (PM)",
+                    "Digital modulation"
+                ],
+                correctAnswer: 3
+            },
+            {
+                question: "What is the purpose of error detection and correction in telecommunication?",
+                options: [
+                    "To prevent unauthorized access to the network",
+                    "To improve the efficiency of data transmission",
+                    "To ensure the privacy of transmitted data",
+                    "To detect and fix errors that occur during transmission"
+                ],
+                correctAnswer: 3
+            },
+            {
+                question: "What is the role of a router in a telecommunication network?",
+                options: [
+                    "To transmit data between devices within a local area network (LAN)",
+                    "To provide internet access to end users",
+                    "To connect different networks and forward data packets",
+                    "To convert analog signals to digital signals"
+                ],
+                correctAnswer: 2
+            }
+        ];
+
+        const quizContainer = document.getElementById("quiz-questions");
+        quizQuestions.forEach((questionObj, index) => {
+            const questionElement = document.createElement("div");
+            questionElement.innerHTML = `
+                <p>${index + 1}. ${questionObj.question}</p>
+                <ul>
+                    ${questionObj.options.map((option, optionIndex) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="question${index}" value="${optionIndex}">
+                                ${option}
+                            </label>
+                        </li>
+                    `).join("")}
+                </ul>
+                <p class="question-feedback"></p>
+            `;
+            quizContainer.appendChild(questionElement);
+        });
+
+        const submitButton = document.getElementById("submit-quiz");
+        submitButton.addEventListener("click", () => {
+            const userAnswers = [];
+
+            quizQuestions.forEach((questionObj, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                const feedbackElement = document.querySelector(`#quiz-questions div:nth-child(${index + 1}) .question-feedback`);
+
+                if (selectedOption) {
+                    const selectedValue = parseInt(selectedOption.value);
+                    userAnswers.push(selectedValue);
+
+                    if (selectedValue === questionObj.correctAnswer) {
+                        feedbackElement.textContent = "Correct";
+                        feedbackElement.classList.add("correct-answer");
+                    } else {
+                        feedbackElement.innerHTML = `Incorrect. The correct answer is: <span class="correct-answer">${questionObj.options[questionObj.correctAnswer]}</span>`;
+                        feedbackElement.classList.add("incorrect-answer");
+                    }
+                } else {
+                    feedbackElement.innerHTML = `You didn't select an answer. The correct answer is: <span class="correct-answer">${questionObj.options[questionObj.correctAnswer]}</span>`;
+                    feedbackElement.classList.add("incorrect-answer");
+                }
+            });
+
+            const feedbackContainer = document.getElementById("quiz-feedback");
+            feedbackContainer.innerHTML = `
+                <h3>Your Quiz Result</h3>
+                <p>You submitted the quiz.</p>
+            `;
+        });
+    </script>
+</body>
+</html>
