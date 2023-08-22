@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Game Engine Architecture</title>
+    <title>Introduction to HTML</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -62,7 +62,7 @@
 </head>
 <body>
     <section id="video-section">
-        <h2>Game Engine Architecture</h2>
+        <h2>Introduction to HTML</h2>
         <div id="video-player"></div>
     </section>
     <section id="resources-section">
@@ -71,55 +71,40 @@
         <button id="download-button"><a href="https://example.com/resources.pdf" download>Download Resources</a></button>
     </section>
     <section id="quiz-section">
-        <h2>Quiz: Game Engine Architecture</h2>
+        <h2>Quiz: Introduction to HTML</h2>
         <div id="quiz-questions"></div>
         <button id="submit-quiz">Submit Quiz</button>
         <div id="quiz-feedback"></div>
     </section>
     <script>
         const videoPlayer = document.getElementById("video-player");
-        videoPlayer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/watch?v=GK7ntA7a2vk&list=PLGvfHSgImk4ae9O7hLks6AJQTnQ3IIpDi" frameborder="0" allowfullscreen></iframe>';
+        videoPlayer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>';
 
         const quizQuestions = [
             {
-                question: "What is a game engine in the context of video game development?",
-                options: [
-                    "A tool for creating game assets like textures and models",
-                    "A software library for rendering graphics",
-                    "A platform for scripting game logic",
-                    "A system that provides core functionality for games"
-                ],
-                correctAnswer: 3
+                question: "What does HTML stand for?",
+                options: ["Hyper Text Markup Language", "Hyperlink and Text Markup Language", "High Tech Modern Language", "Home Tool Markup Language"],
+                correctAnswer: 0
             },
             {
-                question: "What is the main purpose of a game engine's rendering subsystem?",
-                options: ["Creating game levels", "Handling player input", "Managing game assets", "Generating visuals on screen"],
-                correctAnswer: 3
+                question: "Which HTML tag is used to define the title of a document?",
+                options: ["<title>", "<header>", "<heading>", "<h1>"],
+                correctAnswer: 0
             },
             {
-                question: "Which component of a game engine manages the timing and synchronization of game logic?",
-                options: [
-                    "Physics engine",
-                    "Audio engine",
-                    "Graphics engine",
-                    "Game loop"
-                ],
-                correctAnswer: 3
-            },
-            {
-                question: "What is the role of a physics engine in a game engine architecture?",
-                options: [
-                    "Creating realistic visual effects",
-                    "Handling player input",
-                    "Simulating physical interactions",
-                    "Managing game assets"
-                ],
-                correctAnswer: 2
-            },
-            {
-                question: "What does ECS stand for in the context of game engine architecture?",
-                options: ["Event-Component-System", "Entity-Component-System", "Engine-Code-Scripting", "Event-Content-System"],
+                question: "Which HTML element is used to create a hyperlink?",
+                options: ["<link>", "<a>", "<href>", "<url>"],
                 correctAnswer: 1
+            },
+            {
+                question: "What is the correct HTML element for inserting a line break?",
+                options: ["<br>", "<lb>", "<break>", "<newline>"],
+                correctAnswer: 0
+            },
+            {
+                question: "Which HTML tag is used for creating an unordered list?",
+                options: ["<ul>", "<ol>", "<list>", "<li>"],
+                correctAnswer: 0
             }
         ];
 
