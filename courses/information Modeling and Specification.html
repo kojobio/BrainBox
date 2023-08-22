@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Information Modeling and Specification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #video-section, #resources-section, #quiz-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #quiz-questions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #quiz-questions ul li {
+            margin-bottom: 10px;
+        }
+
+        #quiz-questions label {
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        #quiz-feedback h3 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        #download-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section id="video-section">
+        <h2>Information Modeling and Specification</h2>
+        <div id="video-player"></div>
+    </section>
+    <section id="resources-section">
+        <h2>Resources</h2>
+        <p>Explore additional learning resources:</p>
+        <button id="download-button"><a href="https://example.com/resources.pdf" download>Download Resources</a></button>
+    </section>
+    <section id="quiz-section">
+        <h2>Quiz: Information Modeling and Specification</h2>
+        <div id="quiz-questions"></div>
+        <button id="submit-quiz">Submit Quiz</button>
+        <div id="quiz-feedback"></div>
+    </section>
+    <script>
+        const videoPlayer = document.getElementById("video-player");
+        videoPlayer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>';
+
+        const quizQuestions = [
+            {
+                question: "What is information modeling?",
+                options: [
+                    "The process of designing a user interface",
+                    "Creating a physical model of a system",
+                    "Representing concepts and relationships in a structured format",
+                    "Analyzing data for statistical purposes"
+                ],
+                correctAnswer: 2
+            },
+            {
+                question: "Which modeling notation is commonly used for representing entity-relationship diagrams?",
+                options: ["UML", "DFD", "ERD", "BPMN"],
+                correctAnswer: 2
+            },
+            {
+                question: "What does the acronym UML stand for in the context of information modeling?",
+                options: [
+                    "Unified Modeling Language",
+                    "Universal Modeling Logic",
+                    "User-Managed Language",
+                    "Uniform Model Locator"
+                ],
+                correctAnswer: 0
+            },
+            {
+                question: "What is the purpose of a use case diagram in information modeling?",
+                options: [
+                    "To show the flow of data within a system",
+                    "To represent the interactions between system components",
+                    "To visualize the relationships between database tables",
+                    "To document user interactions with a system"
+                ],
+                correctAnswer: 3
+            },
+            {
+                question: "What is the main goal of information specification?",
+                options: [
+                    "To create a physical representation of a system",
+                    "To design user interfaces",
+                    "To define detailed requirements for a system",
+                    "To implement algorithms for data processing"
+                ],
+                correctAnswer: 2
+            }
+        ];
+
+        const quizContainer = document.getElementById("quiz-questions");
+        quizQuestions.forEach((questionObj, index) => {
+            const questionElement = document.createElement("div");
+            questionElement.innerHTML = `
+                <p>${index + 1}. ${questionObj.question}</p>
+                <ul>
+                    ${questionObj.options.map((option, optionIndex) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="question${index}" value="${optionIndex}">
+                                ${option}
+                            </label>
+                        </li>
+                    `).join("")}
+                </ul>
+                <p class="question-feedback"></p>
+            `;
+            quizContainer.appendChild(questionElement);
+        });
+
+        const submitButton = document.getElementById("submit-quiz");
+        submitButton.addEventListener("click", () => {
+            const userAnswers = [];
+
+            quizQuestions.forEach((questionObj, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                const feedbackElement = document.querySelector(`#quiz-questions div:nth-child(${index + 1}) .question-feedback`);
+
+                if (selectedOption) {
+                    const selectedValue = parseInt(selectedOption.value);
+                    userAnswers.push(selectedValue);
+
+                    if (selectedValue === questionObj.correctAnswer) {
+                        feedbackElement.textContent = "Correct";
+                        feedbackElement.classList.add("correct-answer");
+                    } else {
+                        feedbackElement.innerHTML = `Incorrect. The correct answer is: <span class="correct-answer">${questionObj.options[questionObj.correctAnswer]}</span>`;
+                        feedbackElement.classList.add("incorrect-answer");
+                    }
+                } else {
+                    feedbackElement.innerHTML = `You didn't select an answer. The correct answer is: <span class="correct-answer">${questionObj.options[questionObj.correctAnswer]}</span>`;
+                    feedbackElement.classList.add("incorrect-answer");
+                }
+            });
+
+            const feedbackContainer = document.getElementById("quiz-feedback");
+            feedbackContainer.innerHTML = `
+                <h3>Your Quiz Result</h3>
+                <p>You submitted the quiz.</p>
+            `;
+        });
+    </script>
+</body>
+</html>

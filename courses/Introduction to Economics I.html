@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Introduction to Economics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #video-section, #resources-section, #quiz-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #quiz-questions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #quiz-questions ul li {
+            margin-bottom: 10px;
+        }
+
+        #quiz-questions label {
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        #quiz-feedback h3 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .correct-answer {
+            color: green;
+        }
+
+        .incorrect-answer {
+            color: red;
+        }
+
+        #download-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section id="video-section">
+        <h2>Introduction to Economics</h2>
+        <div id="video-player"></div>
+    </section>
+    <section id="resources-section">
+        <h2>Resources</h2>
+        <p>Explore additional learning resources:</p>
+        <button id="download-button"><a href="https://example.com/resources.pdf" download>Download Resources</a></button>
+    </section>
+    <section id="quiz-section">
+        <h2>Quiz: Introduction to Economics</h2>
+        <div id="quiz-questions"></div>
+        <button id="submit-quiz">Submit Quiz</button>
+        <div id="quiz-feedback"></div>
+    </section>
+    <script>
+        const videoPlayer = document.getElementById("video-player");
+        videoPlayer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>';
+
+        const quizQuestions = [
+            {
+                question: "What is the basic economic problem?",
+                options: [
+                    "Lack of resources",
+                    "Unlimited wants and limited resources",
+                    "Market inefficiency",
+                    "Inflation"
+                ],
+                correctAnswer: 1
+            },
+            {
+                question: "Which economic system is characterized by private ownership of resources and individual decision-making?",
+                options: ["Command economy", "Mixed economy", "Traditional economy", "Market economy"],
+                correctAnswer: 3
+            },
+            {
+                question: "What does GDP stand for in economics?",
+                options: [
+                    "Gross Domestic Product",
+                    "General Demand and Price",
+                    "Government Development Plan",
+                    "Goods Distribution Process"
+                ],
+                correctAnswer: 0
+            },
+            {
+                question: "Which term refers to the total value of goods and services produced within a country in a given time period?",
+                options: ["Income", "Profit", "Output", "GDP"],
+                correctAnswer: 3
+            },
+            {
+                question: "What is the study of how people make choices to satisfy their wants in the face of scarcity?",
+                options: ["Economics", "Psychology", "Sociology", "Anthropology"],
+                correctAnswer: 0
+            }
+        ];
+
+        const quizContainer = document.getElementById("quiz-questions");
+        quizQuestions.forEach((questionObj, index) => {
+            const questionElement = document.createElement("div");
+            questionElement.innerHTML = `
+                <p>${index + 1}. ${questionObj.question}</p>
+                <ul>
+                    ${questionObj.options.map((option, optionIndex) => `
+                        <li>
+                            <label>
+                                <input type="radio" name="question${index}" value="${optionIndex}">
+                                ${option}
+                            </label>
+                        </li>
+                    `).join("")}
+                </ul>
+                <p class="question-feedback"></p>
+            `;
+            quizContainer.appendChild(questionElement);
+        });
+
+        const submitButton = document.getElementById("submit-quiz");
+        submitButton.addEventListener("click", () => {
+            const userAnswers = [];
+
+            quizQuestions.forEach((questionObj, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                const feedbackElement = document.querySelector(`#quiz-questions div:nth-child(${index + 1}) .question-feedback`);
+
+                if (selectedOption) {
+                    const selectedValue = parseInt(selectedOption.value);
+                    userAnswers.push(selectedValue);
+
+                    if (selectedValue === questionObj.correctAnswer) {
+                        feedbackElement.textContent = "Correct";
+                        feedbackElement.classList.add("correct-answer");
+                    } else {
+                        feedbackElement.innerHTML = `Incorrect. The correct answer is: <span class="correct-answer">${questionObj.options[questionObj.correctAnswer]}</span>`;
+                        feedbackElement.classList.add("incorrect-answer");
+                    }
+                } else {
+                    feedbackElement.innerHTML = `You didn't select an answer. The correct answer is: <span class="correct-answer">${questionObj.options[questionObj.correctAnswer]}</span>`;
+                    feedbackElement.classList.add("incorrect-answer");
+                }
+            });
+
+            const feedbackContainer = document.getElementById("quiz-feedback");
+            feedbackContainer.innerHTML = `
+                <h3>Your Quiz Result</h3>
+                <p>You submitted the quiz.</p>
+            `;
+        });
+    </script>
+</body>
+</html>
